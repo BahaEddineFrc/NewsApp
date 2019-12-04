@@ -10,8 +10,7 @@ import com.viking.news.databinding.NewsItemBinding
 import com.viking.news.models.NewsModel
 
 
-class NewsAdapter(
-                    private var callback :(NewsModel)->Unit) :
+class NewsAdapter(private var callback :(NewsModel)->Unit) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
 

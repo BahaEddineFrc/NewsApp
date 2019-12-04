@@ -60,7 +60,7 @@ class NewsMain : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = NewsAdapter(null) { n->
+        val adapter = NewsAdapter() { n->
             intent = Intent(this, NewsDetails::class.java)
             intent.putExtra("newsUrl",n.external_link)
             startActivity(intent)
