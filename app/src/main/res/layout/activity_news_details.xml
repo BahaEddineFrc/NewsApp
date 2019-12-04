@@ -10,12 +10,31 @@
             type="com.viking.news.viewmodels.DetailsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.NewsDetails">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_alignParentTop="true">
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:textColor="@color/white"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/news" />
+        </androidx.appcompat.widget.Toolbar>
+
         <WebView
+            android:layout_below="@+id/toolbar_top"
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,13 +42,11 @@
             app:setWebViewClient="@{viewModel.webViewClient}" />
 
         <ProgressBar
+            android:progressTint="@color/white"
             android:id="@+id/news_prog_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.hideProgress ? 8 : 1}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 </layout>

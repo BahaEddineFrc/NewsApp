@@ -10,8 +10,9 @@ import com.viking.news.R
 @BindingAdapter("android:img")
 fun setImageUrl(imageView: ImageView, url: String?) {
     if (url != null) {
-        val u = url.substring(0, 4) + "s" + url.substring(4, url.length)
-        Picasso.get().load(u)
+        val securedUrl = url.substring(0, 4) + "s" + url.substring(4, url.length)
+        Picasso.get().load(securedUrl)
+            .placeholder(R.drawable.news_back)
             .resize(600,400)
             .centerCrop()
             .error(R.drawable.ic_launcher_background)

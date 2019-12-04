@@ -10,7 +10,7 @@ import com.viking.news.databinding.NewsItemBinding
 import com.viking.news.models.NewsModel
 
 
-class NewsAdapter(private var emptyView: View? = null,
+class NewsAdapter(
                     private var callback :(NewsModel)->Unit) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
@@ -20,9 +20,6 @@ class NewsAdapter(private var emptyView: View? = null,
 
     fun setNews(newsModels: List<NewsModel>?) {
         this.newsModels = newsModels
-
-        //if (NewsModels == null || NewsModels.isEmpty()) emptyView!!.visibility = View.VISIBLE
-        //else emptyView!!.visibility = View.GONE
 
         notifyDataSetChanged()
 

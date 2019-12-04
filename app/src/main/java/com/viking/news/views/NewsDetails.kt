@@ -11,6 +11,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.viking.news.R
 import com.viking.news.databinding.ActivityNewsDetailsBinding
 import com.viking.news.viewmodels.DetailsViewModel
+import androidx.appcompat.widget.Toolbar
+
+
 
 class NewsDetails : AppCompatActivity() {
 
@@ -20,9 +23,20 @@ class NewsDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_news_details)
+        binding = DataBindingUtil.setContentView(this, com.viking.news.R.layout.activity_news_details)
         model = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
         binding.viewModel = model
+
+        val toolbar = findViewById<Toolbar>(com.viking.news.R.id.toolbar_top)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_action_back)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         intent.getStringExtra("newsUrl")?.let {newsUrl->
             model.setWebviewUrl(newsUrl)

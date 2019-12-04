@@ -40,7 +40,6 @@ class DetailsViewModel() : ViewModel() {
             view: WebView, request: WebResourceRequest, error: WebResourceError
         ) {
             super.onReceivedError(view, request, error)
-            Log.d("DetailsViewModel", "erroor : $error")
             hideProgress.set(true)
             _error.value = true
         }
@@ -68,28 +67,10 @@ class DetailsViewModel() : ViewModel() {
             hideProgress.set(true)
             _error.value = false
         }
-
-        override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
-            Log.d("DetailsViewModel", "onReceivedSslError")
-            handler.proceed()
-        }
-
-        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            return false
-        }
     }
 
     fun getWebViewClient(): WebViewClient {
         return Client()
     }
-
-
-    /*fun isHideProgress(): Boolean {
-        return hideProgress.get()!!
-    }
-
-    private fun setHideProgress() {
-        hideProgress.set(true)
-    }*/
 
 }
