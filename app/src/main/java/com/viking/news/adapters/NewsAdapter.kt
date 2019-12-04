@@ -18,7 +18,7 @@ class NewsAdapter(private var emptyView: View? = null,
     private var newsModels: List<NewsModel>? = null
 
 
-    fun setNewsModels(newsModels: List<NewsModel>?) {
+    fun setNews(newsModels: List<NewsModel>?) {
         this.newsModels = newsModels
 
         //if (NewsModels == null || NewsModels.isEmpty()) emptyView!!.visibility = View.VISIBLE

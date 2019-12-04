@@ -10,7 +10,7 @@ interface RestApiInterface {
     @GET("/")
     fun getAllCategories(): Single<CategoryModel>
 
-    @GET("/{categoryId}") //5729fc387fdea7e267fa9761
-    fun getNewsForCategory(@Path("categoryId") newsCategoryId: String): Single<NewsModel>
+    @GET("/{categoryId}")
+    fun getNewsForCategory(@Path("categoryId") newsCategoryId: String): Single<ArrayList<NewsModel>>
 
 }
