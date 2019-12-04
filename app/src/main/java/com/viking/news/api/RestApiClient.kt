@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RestApiClient {
 
-    const val BASE_URL = "https://mcc.hu/api/app/article_types/"
+    const val BASE_URL = "https://mcc.hu/api/app/"
 
     private var getClient: Retrofit =
         Retrofit.Builder()

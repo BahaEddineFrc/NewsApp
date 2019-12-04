@@ -3,6 +3,7 @@ package com.viking.news.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,17 +23,16 @@ class NewsMain : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        model = ViewModelProviders.of(this).get(NewsViewModel::class.java)
+        binding.viewmodel=model
 
         val swipeRefreshLayout=findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
 
         swipeRefreshLayout.setProgressViewOffset(true, START_SWIPE_REFRESH, resources.getDimension(R.dimen.swipe_refresh_offset).toInt())
 
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        model = ViewModelProviders.of(this).get(NewsViewModel::class.java)
-        binding.viewmodel=model
 
         model.error.observe(this, androidx.lifecycle.Observer { isError->
             if(isError)

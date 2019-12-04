@@ -21,23 +21,24 @@ class DetailsViewModel() : ViewModel() {
     val error: LiveData<Boolean>
         get() = _error
 
+    var hideProgress=ObservableField<Boolean>(false)
+
     fun setWebviewUrl(url: String){
         this.url.set(url)
     }
 
-    private var hideProgress=ObservableField<Boolean>(false)
 
     private inner class Client : WebViewClient() {
         override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError
         ) {
             super.onReceivedError(view, request, error)
-            setHideProgress()
+            hideProgress.set(true)
             _error.value = true
         }
 
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-            setHideProgress()
+            hideProgress.set(true)
             _error.value = false
         }
     }
@@ -47,13 +48,12 @@ class DetailsViewModel() : ViewModel() {
     }
 
 
-    @Bindable
-    fun isHideProgress(): Boolean {
+    /*fun isHideProgress(): Boolean {
         return hideProgress.get()!!
     }
 
     private fun setHideProgress() {
         hideProgress.set(true)
-    }
+    }*/
 
 }

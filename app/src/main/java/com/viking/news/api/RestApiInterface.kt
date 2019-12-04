@@ -7,10 +7,10 @@ import retrofit2.http.*
 
 interface RestApiInterface {
 
-    @GET("/")
+    @GET("article_types/")
     fun getAllCategories(): Single<CategoryModel>
 
-    @GET("/{categoryId}")
-    fun getNewsForCategory(@Path("categoryId") newsCategoryId: String): Single<ArrayList<NewsModel>>
+    @GET("article_types/{categoryId}")
+    fun getNewsForCategory(@Path("categoryId") newsCategoryId: String ): Single<ArrayList<NewsModel>>
 
 }

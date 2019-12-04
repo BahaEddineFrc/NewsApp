@@ -26,7 +26,7 @@
             android:id="@+id/news_prog_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{viewModel.hideProgress ? View.GONE: View.Visible}"
+            android:visibility="@{viewModel.hideProgress ? 8 : 1}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
