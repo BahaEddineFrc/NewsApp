@@ -62,7 +62,7 @@ class NewsMain : AppCompatActivity() {
 
         val adapter = NewsAdapter(null) { n->
             intent = Intent(this, NewsDetails::class.java)
-            intent.putExtra("newsItem",n)
+            intent.putExtra("newsUrl",n.external_link)
             startActivity(intent)
         }
 
